@@ -11,7 +11,17 @@ public class Recipe
     private string[] steps;
 
 
+    public Recipe()
+    {
+        numIngredients = 0;
+        numSteps = 0;
+    }
 
+
+    static void Main(String[] args)
+    {
+
+    }
 
 
 }

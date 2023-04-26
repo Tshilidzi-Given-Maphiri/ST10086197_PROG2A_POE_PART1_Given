@@ -48,6 +48,7 @@ public class Recipe
         this.numSteps = numSteps;
         steps = new string[numSteps];
 
+        // for loop that goes over the amount of steps you have specified.
         for (int i = 0; i < numSteps; i++)
         {
             Console.WriteLine($"Enter step {i + 1}:");
@@ -55,6 +56,27 @@ public class Recipe
         }
     }
 
+
+    // method to display the recipe.
+    public void DisplayRecipe()
+    {
+        Console.WriteLine("");
+        Console.WriteLine("----------Recipe:---------------");
+        Console.WriteLine("");
+        Console.WriteLine("--------Ingredients:--------");
+        for (int i = 0; i < numIngredients; i++)
+        {
+            Console.WriteLine($"{ingredientNames[i]} - {ingredientQuantities[i]} {ingredientUnits[i]}");
+        }
+
+        Console.WriteLine("\nSteps:");
+        for (int i = 0; i < numSteps; i++)
+        {
+            Console.WriteLine($"{i + 1}. {steps[i]}");
+        }
+    }
+
+    // clears all of the variables in Recipe.
     public void ClearRecipe()
     {
         numIngredients = 0;
@@ -73,6 +95,19 @@ public class Recipe
         Console.WriteLine("Enter the number of ingredients:");
         int numIngredients = int.Parse(Console.ReadLine());
         recipe.SetIngredients(numIngredients);
+
+        Console.WriteLine("");
+
+        Console.WriteLine("Enter the number of steps:");
+        int numSteps = int.Parse(Console.ReadLine());
+        recipe.SetSteps(numSteps);
+
+        Console.WriteLine("----------Recipe:---------------");
+        recipe.DisplayRecipe();
+
+        Console.WriteLine("");
+
+        Console.WriteLine("-------------------------------------------");
     }
 
 

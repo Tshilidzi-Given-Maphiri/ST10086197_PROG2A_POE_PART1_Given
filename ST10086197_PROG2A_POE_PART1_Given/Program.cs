@@ -25,8 +25,11 @@ public class Recipe
         ingredientQuantities = new double[numIngredients];
         ingredientUnits = new string[numIngredients];
 
+        // loop that takes in user inut for the number of ingredients and prompts this as many times as it appears.
         for (int i = 0; i < numIngredients; i++)
         {
+            Console.WriteLine("-------INGREDIENTS-------");
+
             Console.WriteLine("Enter ingredient name:");
             ingredientNames[i] = Console.ReadLine();
 
@@ -35,6 +38,20 @@ public class Recipe
 
             Console.WriteLine("Enter ingredient unit of measurement:");
             ingredientUnits[i] = Console.ReadLine();
+
+            Console.WriteLine("-------_______________-------");
+        }
+    }
+
+    public void SetSteps(int numSteps)
+    {
+        this.numSteps = numSteps;
+        steps = new string[numSteps];
+
+        for (int i = 0; i < numSteps; i++)
+        {
+            Console.WriteLine($"Enter step {i + 1}:");
+            steps[i] = Console.ReadLine();
         }
     }
 
@@ -49,6 +66,9 @@ public class Recipe
     static void Main(String[] args)
     {
         Recipe recipe = new Recipe();
+
+
+        Console.WriteLine("-------RECIPE_APP-------");
 
         Console.WriteLine("Enter the number of ingredients:");
         int numIngredients = int.Parse(Console.ReadLine());

@@ -76,6 +76,15 @@ public class Recipe
         }
     }
 
+    // scales the recipe depending on the users preference
+    public void ScaleRecipe(double factor)
+    {
+        for (int i = 0; i < numIngredients; i++)
+        {
+            ingredientQuantities[i] *= factor;
+        }
+    }
+
     // clears all of the variables in Recipe.
     public void ClearRecipe()
     {
@@ -108,6 +117,12 @@ public class Recipe
         Console.WriteLine("");
 
         Console.WriteLine("-------------------------------------------");
+
+        Console.WriteLine("Enter scale factor (0.5, 2, or 3):");
+        double scaleFactor = double.Parse(Console.ReadLine());
+        recipe.ScaleRecipe(scaleFactor);
+        Console.WriteLine($"Recipe scaled by a factor of {scaleFactor}:");
+        recipe.DisplayRecipe();
     }
 
 

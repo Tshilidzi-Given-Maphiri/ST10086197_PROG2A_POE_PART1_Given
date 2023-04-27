@@ -85,6 +85,12 @@ public class Recipe
         }
     }
 
+    public void ResetQuantities()
+    {
+        // ingredient quantities are reset to their original values
+        //work out implementation.
+    }
+
     // clears all of the variables in Recipe.
     public void ClearRecipe()
     {

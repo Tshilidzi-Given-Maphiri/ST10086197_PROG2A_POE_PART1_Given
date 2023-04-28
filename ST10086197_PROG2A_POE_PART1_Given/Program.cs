@@ -177,9 +177,11 @@ public class Recipe
     public void DisplayRecipe()
     {
         Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("----------Recipe:---------------");
         Console.WriteLine("");
         Console.WriteLine("--------Ingredients:--------");
+        Console.ForegroundColor = ConsoleColor.White;
         for (int i = 0; i < numIngredients; i++)
         {
             Console.WriteLine($"{ingredientNames[i]} - {ingredientQuantities[i]} {ingredientUnits[i]}");
@@ -288,13 +290,7 @@ public class Recipe
 
             }
 
-
-        
-
-
     }
-
-
 
 
      public void ResetQuantities(double[] originalQuantities)
@@ -303,6 +299,7 @@ public class Recipe
         // Reset the quantities to their original values
         Array.Copy(originalQuantities, ingredientQuantities, originalQuantities.Length);
     }
+
 
     // clears all of the variables in Recipe.
     public void ClearRecipe()
@@ -315,15 +312,56 @@ public class Recipe
         steps = new string[0];
     }
 
+    public void begin()
+    {
+        // prompts user and shows example of value type to enter
+        Console.WriteLine("Enter an appropraite number below: \r\n 1. New Recipe\r\n 2. Display Recipe\r\n 3. Clear Recipe\r\n 4.Exit");
+        string choiceEntry = Console.ReadLine();
 
+
+        while (choiceEntry != "4")
+        {
+
+            if (choiceEntry == "1")
+            {
+                SetRecipe(numIngredients);
+                break;
+            }
+            else if (choiceEntry == "2")
+            {
+                DisplayRecipe();
+                break;
+            }
+            else if (choiceEntry == "3") //  quits the application.
+            {
+                ClearRecipe();
+                break;
+            }
+
+        }
+
+        if (choiceEntry != "4")
+        {
+            //Main(null);
+
+        }
+    }
 
     static void Main(String[] args)
     {
         Recipe recipe = new Recipe();
 
-
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("-------RECIPE_APP-------");
+        Console.ForegroundColor = ConsoleColor.White;
 
+        recipe.begin();// begins running the application.
+        Console.WriteLine("");
+
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("----------Recipe:---------------");
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Enter the number of ingredients:");
         int numIngredients = int.Parse(Console.ReadLine());
         recipe.SetRecipe(numIngredients);
@@ -333,9 +371,12 @@ public class Recipe
         Console.WriteLine("Enter the number of steps:");
         int numSteps = int.Parse(Console.ReadLine());
         recipe.SetSteps(numSteps);
-
+        
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("----------Recipe:---------------");
+        Console.ForegroundColor = ConsoleColor.White;
         recipe.DisplayRecipe();
+        
 
         Console.WriteLine("");
 
@@ -344,7 +385,10 @@ public class Recipe
         Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
         double scaleFactor = double.Parse(Console.ReadLine());
         recipe.ScaleRecipe(scaleFactor);
+
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"Recipe scaled by a factor of {scaleFactor}:");
+        Console.ForegroundColor = ConsoleColor.White;
         recipe.DisplayRecipe();
     }
 

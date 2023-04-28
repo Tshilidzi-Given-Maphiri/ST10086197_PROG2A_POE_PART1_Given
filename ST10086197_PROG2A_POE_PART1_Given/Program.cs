@@ -71,6 +71,8 @@ public class Recipe
                 Console.WriteLine("Enter the quantity of the ingredient: ");
 
                 ingredientQuantities[r] = double.Parse(Console.ReadLine());
+
+                
             }
            
 
@@ -188,15 +190,116 @@ public class Recipe
     public void ScaleRecipe(double factor)
     {
         for (int i = 0; i < numIngredients; i++)
-        {
-            ingredientQuantities[i] *= factor;
-        }
+         {
+             ingredientQuantities[i] *= factor;
+
+         }
+        
+
+        
+            string[] unitOfMeasurement = { "teaspoon", "tablespoon", "cup", "quart" };
+
+            for (int i = 0; i < numIngredients; i++)
+            {
+                double quantity = ingredientQuantities[i] * factor;
+                string unit = ingredientUnits[i];
+
+                if (unit == unitOfMeasurement[0] && quantity <= 3)
+                {
+                    double tablespoons = quantity / 3;
+                    double teaspoonsRemaining = quantity % 3;
+
+
+                    if (tablespoons >= 16)
+                    {
+                        double cups = tablespoons / 16;
+                        double tablespoonsRemaining = tablespoons % 16;
+
+                        if (cups >= 4)
+                        {
+                            double quarts = cups / 4;
+                            double cupsRemaining = cups % 4;
+
+                            if (cupsRemaining > 0)
+                            {
+                                Console.WriteLine("{0} {1} {2} {3} {4}", Math.Floor(quarts), "quart", Math.Floor(cupsRemaining), "cup", Math.Floor(tablespoonsRemaining), "tablespoon");
+                            }
+                            else
+                            {
+                                Console.WriteLine("{0} {1}", Math.Floor(quarts), "quart");
+                            }
+                        }
+                        else if (tablespoonsRemaining > 0)
+                        {
+                            Console.WriteLine("{0} {1} {2} {3}", Math.Floor(cups), "cup", Math.Floor(tablespoonsRemaining), "tablespoon");
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} {1}", Math.Floor(cups), "cup");
+                        }
+                    }
+                    else if (teaspoonsRemaining > 0)
+                    {
+                        Console.WriteLine("{0} {1} {2} {3}", Math.Floor(tablespoons), "tablespoon", Math.Floor(teaspoonsRemaining), "teaspoon");
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} {1}", Math.Floor(tablespoons), "tablespoon");
+                    }
+                }
+
+
+            if (unit == unitOfMeasurement[1] && quantity >= 16)
+                {
+                    double cups = quantity / 16;
+                    double tablespoonsRemaining = quantity % 16;
+
+                    if (cups >= 4)
+                    {
+                        double quarts = cups / 4;
+                        double cupsRemaining = cups % 4;
+
+                        if (cupsRemaining > 0)
+                        {
+                            Console.WriteLine("{0} {1} {2} {3}", Math.Floor(quarts), "quart", Math.Floor(cupsRemaining), "cup");
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} {1}", Math.Floor(quarts), "quart");
+                        }
+                    }
+
+
+                     if (tablespoonsRemaining > 0)
+                    {
+                        Console.WriteLine("{0} {1} {2} {3}", Math.Floor(cups), "cup", Math.Floor(tablespoonsRemaining), "tablespoon");
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} {1}", Math.Floor(cups), "cup");
+                    }
+                }
+
+            }
+
+
+        
+
+
     }
 
-    public void ResetQuantities()
+
+
+
+     public void ResetQuantities()
     {
-        // ingredient quantities are reset to their original values
-        //work out implementation.
+        // sets all of the following to their default values.
+        numIngredients = 0;
+        ingredientNames = new string[0];
+        ingredientQuantities = new double[0];
+        ingredientUnits = new string[0];
+        numSteps = 0;
+        steps = new string[0];
     }
 
     // clears all of the variables in Recipe.

@@ -132,7 +132,7 @@ public class Recipe
 
         }
 
-        begin();
+        
     }
 
 
@@ -147,12 +147,7 @@ public class Recipe
             Console.WriteLine($"Enter step {i + 1}:");
             steps[i] = Console.ReadLine();
         }
-
-        Console.WriteLine("Enter the number of steps:");
-        numSteps = int.Parse(Console.ReadLine());
         
-
-        begin();
     }
 
 
@@ -165,6 +160,8 @@ public class Recipe
         Console.WriteLine("");
         Console.WriteLine("--------Ingredients:--------");
         Console.ForegroundColor = ConsoleColor.White;
+
+
         for (int i = 0; i < numIngredients; i++)
         {
             Console.WriteLine($"{ingredientNames[i]} - {ingredientQuantities[i]} {ingredientUnits[i]}");
@@ -176,27 +173,20 @@ public class Recipe
             Console.WriteLine($"{i + 1}. {steps[i]}");
         }
 
-        begin();
+       
     }
-
+    
 
     // scales the recipe depending on the users preference
     public void ScaleRecipe(double factor)
     {
-        Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
-        double scaleFactor = double.Parse(Console.ReadLine());
-        ScaleRecipe(scaleFactor);
+        
 
         for (int i = 0; i < numIngredients; i++)
          {
              ingredientQuantities[i] *= factor;
 
          }
-
-        Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine($"Recipe scaled by a factor of {scaleFactor}:");
-        Console.ForegroundColor = ConsoleColor.White;
-        DisplayRecipe();
 
 
         string[] unitOfMeasurement = { "teaspoon", "tablespoon", "cup", "quart" };
@@ -283,8 +273,6 @@ public class Recipe
                 }
 
             }
-
-        begin();
 
     }
 
@@ -373,10 +361,9 @@ public class Recipe
         int numSteps = int.Parse(Console.ReadLine());
         recipe.SetSteps(numSteps);
 
-        recipe.begin();// begins running the application.
-        Console.WriteLine("");
+        
 
-        /* Console.ForegroundColor = ConsoleColor.Blue;
+         Console.ForegroundColor = ConsoleColor.Blue;
          Console.WriteLine("----------Recipe:---------------");
          Console.ForegroundColor = ConsoleColor.White;
          recipe.DisplayRecipe();
@@ -386,9 +373,9 @@ public class Recipe
 
          Console.WriteLine("-------------------------------------------");
 
-         */
+         
 
-        /*Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
+        Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
         double scaleFactor = double.Parse(Console.ReadLine());
         recipe.ScaleRecipe(scaleFactor);
         
@@ -398,8 +385,11 @@ public class Recipe
         Console.ForegroundColor = ConsoleColor.White;
         recipe.DisplayRecipe();
 
-        */
+
+
+        recipe.begin();
+
     }
 
-
+    
 }

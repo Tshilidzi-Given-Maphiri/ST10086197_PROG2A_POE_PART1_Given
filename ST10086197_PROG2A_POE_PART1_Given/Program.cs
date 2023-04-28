@@ -18,7 +18,7 @@ public class Recipe
         numSteps = 0;
     }
 
-    public void SetIngredients(int numIngredients)
+    public void SetRecipe(int numIngredients)
     {
         this.numIngredients = numIngredients;
         ingredientNames = new string[numIngredients];
@@ -26,24 +26,132 @@ public class Recipe
         ingredientUnits = new string[numIngredients];
 
         // loop that takes in user inut for the number of ingredients and prompts this as many times as it appears.
-        for (int i = 0; i < numIngredients; i++)
+       /* for (int i = 0; i < numIngredients; i++)
         {
             Console.WriteLine("-------INGREDIENTS-------");
 
             Console.WriteLine("Enter ingredient name:");
             ingredientNames[i] = Console.ReadLine();
 
-            Console.WriteLine("Enter ingredient quantity:");
-            ingredientQuantities[i] = double.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("Enter ingredient quantity:");
+                ingredientQuantities[i] = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine(" ⬆️ ,not an integer/double");
+                
+            }
 
-            Console.WriteLine("Enter ingredient unit of measurement:");
-            ingredientUnits[i] = Console.ReadLine();
+            // Console.WriteLine("Enter ingredient unit of measurement:");
+            // ingredientUnits[i] = Console.ReadLine();
 
             Console.WriteLine("-------_______________-------");
         }
+       */
+        // Use a while loop to prompt the user to enter information for each ingredient
+        int r = 0;
+        while (r < numIngredients)
+
+        {
+
+            // Ask the user to enter the ingredient name
+
+            Console.WriteLine("Please enter the ingredient name: ");
+
+            ingredientNames[r] = Console.ReadLine();
+
+
+
+            // Ask the user to enter the quantity of the ingredient
+           
+            try
+            {
+                Console.WriteLine("Enter the quantity of the ingredient: ");
+
+                ingredientQuantities[r] = double.Parse(Console.ReadLine());
+            }
+           
+
+            catch (FormatException)
+            {
+                Console.WriteLine(" ⬆ ,not an integer/double");
+
+            }
+
+
+            // prompts user for unit of measurment as well as checks if the unit is correct or not.
+
+            bool correctUnit = false; // boolean to check whether the units are correct or not.
+
+            do
+
+            {
+
+                Console.WriteLine("Please enter the number for the unit of measurement :\r\n 1. teaspoon\r\n 2. tablespoon\r\n 3. cup\r\n 4. quart \r\n 5. units");
+
+                string choice = Console.ReadLine();
+
+
+
+                // Use a switch statement to set the unit of measurement based on the user's choice
+
+                if (choice.Equals("1"))
+
+                {
+                    ingredientUnits[r] = "teaspoon";
+
+                    correctUnit = true;
+                }
+
+                else if (choice.Equals("2"))
+
+                {
+                    ingredientUnits[r] = "tablespoon";
+
+                    correctUnit = true;
+                }
+
+                else if (choice.Equals("3"))
+
+                {
+                    ingredientUnits[r] = "cup";
+
+                    correctUnit = true;
+                }
+
+                else if (choice.Equals("4"))
+
+                {
+                    ingredientUnits[r] = "quart";
+
+                    correctUnit = true;
+                }
+
+                else if (choice.Equals("5"))
+
+                {
+                    ingredientUnits[r] = "units";
+
+                    correctUnit = true;
+                }
+
+                else {
+
+                    Console.WriteLine("Incorrect selection, try again.");
+                }
+
+            } while (correctUnit != true);
+
+            r++;
+
+        }
+
     }
 
-    public void SetSteps(int numSteps)
+
+        public void SetSteps(int numSteps)
     {
         this.numSteps = numSteps;
         steps = new string[numSteps];
@@ -109,7 +217,7 @@ public class Recipe
 
         Console.WriteLine("Enter the number of ingredients:");
         int numIngredients = int.Parse(Console.ReadLine());
-        recipe.SetIngredients(numIngredients);
+        recipe.SetRecipe(numIngredients);
 
         Console.WriteLine("");
 
@@ -124,7 +232,7 @@ public class Recipe
 
         Console.WriteLine("-------------------------------------------");
 
-        Console.WriteLine("Enter scale factor (0.5, 2, or 3):");
+        Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
         double scaleFactor = double.Parse(Console.ReadLine());
         recipe.ScaleRecipe(scaleFactor);
         Console.WriteLine($"Recipe scaled by a factor of {scaleFactor}:");

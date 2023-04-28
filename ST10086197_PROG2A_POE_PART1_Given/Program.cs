@@ -11,6 +11,8 @@ public class Recipe
     private string[] steps;
 
 
+    
+
     public Recipe()
     {
         // sets a value for the varibles, that the program will start with.
@@ -25,31 +27,35 @@ public class Recipe
         ingredientQuantities = new double[numIngredients];
         ingredientUnits = new string[numIngredients];
 
+        // Initialize the originalQuantities array to contain the original quantities
+        double[] originalQuantities = new double[ingredientQuantities.Length];
+        Array.Copy(ingredientQuantities, originalQuantities, ingredientQuantities.Length);
+
         // loop that takes in user inut for the number of ingredients and prompts this as many times as it appears.
-       /* for (int i = 0; i < numIngredients; i++)
-        {
-            Console.WriteLine("-------INGREDIENTS-------");
+        /* for (int i = 0; i < numIngredients; i++)
+         {
+             Console.WriteLine("-------INGREDIENTS-------");
 
-            Console.WriteLine("Enter ingredient name:");
-            ingredientNames[i] = Console.ReadLine();
+             Console.WriteLine("Enter ingredient name:");
+             ingredientNames[i] = Console.ReadLine();
 
-            try
-            {
-                Console.WriteLine("Enter ingredient quantity:");
-                ingredientQuantities[i] = double.Parse(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine(" ⬆️ ,not an integer/double");
-                
-            }
+             try
+             {
+                 Console.WriteLine("Enter ingredient quantity:");
+                 ingredientQuantities[i] = double.Parse(Console.ReadLine());
+             }
+             catch (FormatException)
+             {
+                 Console.WriteLine(" ⬆️ ,not an integer/double");
 
-            // Console.WriteLine("Enter ingredient unit of measurement:");
-            // ingredientUnits[i] = Console.ReadLine();
+             }
 
-            Console.WriteLine("-------_______________-------");
-        }
-       */
+             // Console.WriteLine("Enter ingredient unit of measurement:");
+             // ingredientUnits[i] = Console.ReadLine();
+
+             Console.WriteLine("-------_______________-------");
+         }
+        */
         // Use a while loop to prompt the user to enter information for each ingredient
         int r = 0;
         while (r < numIngredients)
@@ -291,22 +297,22 @@ public class Recipe
 
 
 
-     public void ResetQuantities()
+     public void ResetQuantities(double[] originalQuantities)
     {
         // sets all of the following to their default values.
-        numIngredients = 0;
-        ingredientNames = new string[0];
-        ingredientQuantities = new double[0];
-        ingredientUnits = new string[0];
-        numSteps = 0;
-        steps = new string[0];
+        // Reset the quantities to their original values
+        Array.Copy(originalQuantities, ingredientQuantities, originalQuantities.Length);
     }
 
     // clears all of the variables in Recipe.
     public void ClearRecipe()
     {
         numIngredients = 0;
+        ingredientNames = new string[0];
+        ingredientQuantities = new double[0];
+        ingredientUnits = new string[0];
         numSteps = 0;
+        steps = new string[0];
     }
 
 

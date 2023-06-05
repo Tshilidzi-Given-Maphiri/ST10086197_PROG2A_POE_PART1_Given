@@ -21,7 +21,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Enter the number of ingredients:");
             int numIngredients = int.Parse(Console.ReadLine());
-            recipe.SetRecipe(numIngredients);
+            recipe.addIngredients(numIngredients);
 
             Console.WriteLine("");
 

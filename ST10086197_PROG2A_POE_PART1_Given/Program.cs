@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Security.Cryptography;
 
 namespace ST10086197_PROG2A_POE_PART1_Given
@@ -97,9 +98,11 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
         static void Main(String[] args)
         {
-
+            
             // Create a sorted list of recipes.
             SortedList<string, Recipe> recipes = new SortedList<string, Recipe>();
+
+            //Recipe recipe = new Recipe();
 
             
 
@@ -116,11 +119,9 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
  // display informational text
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("----------Recipe:---------------");
+            Console.WriteLine("----------LIst of Recipe Names:---------------");
             Console.ForegroundColor = ConsoleColor.White;
 
-
-            //Display the recipe
 
             
             // Display the list of recipe names
@@ -129,6 +130,9 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             {
                 Console.WriteLine(list);
             }
+
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("");
 
             // Select a recipe to display.
             Console.WriteLine("Enter the name of the recipe to display: ");
@@ -143,7 +147,53 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             Console.WriteLine("-------------------------------------------");
 
-            
+
+            // prompts user and shows example of value type to enter
+            Console.WriteLine("Enter an appropraite number below: " +
+                "\r\n 1. New Recipe\r\n 2. Display Recipe\r\n 3. List Recipe" + "\r\n 4.Clear Recipe" + "\r\n 5.Exit");
+            string choiceEntry = Console.ReadLine();
+
+
+            while (choiceEntry != "5")
+            {
+
+                if (choiceEntry == "1")
+                {
+                    //Main();
+                    //inputRecipe(recipes);
+                    break;
+                }
+                else if (choiceEntry == "2")
+                {
+                    recipe.DisplayRecipe();
+                    break;
+                }
+                else if (choiceEntry == "3") //  quits the application.
+                {
+                    // Display the list of recipe names
+                    Console.WriteLine("List of Recipe Names:");
+                    foreach (var list in recipes.Keys)
+                    {
+                        Console.WriteLine(list);
+                    }
+                    break;
+                }
+                else if (choiceEntry == "4")
+                {
+                    recipe.DisplayRecipe();
+                    break;
+                }
+
+            }
+
+            if (choiceEntry != "5")
+            {
+                Console.WriteLine("See you Soon! ✋");
+                Environment.Exit(-1);
+
+            }
+
+
 
             // Scale the recipe
             Console.WriteLine("Do you want to scale the recipe? (Y/N) ");
@@ -183,7 +233,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
         }
 
-       
+        
 
     }
    

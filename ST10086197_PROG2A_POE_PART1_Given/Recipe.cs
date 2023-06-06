@@ -134,29 +134,44 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
 
         // clears all of the variables in Recipe.
-        public void ClearRecipe()
+        public void ClearRecipe(SortedList<string, Recipe> recipes)
         {
-            // find a way to delete recipe based ontheir name.
+            
 
-           /* numIngredients = 0;
-            ingredientNames = new string[0];
-            ingredientQuantities = new double[0];
-            ingredientUnits = new string[0];
-            numSteps = 0;
-            steps = new string[0];
+            // Display the list of recipe names
+            Console.WriteLine("List of Recipe Names:");
+            foreach (var list in recipes.Keys)
+            {
+                Console.WriteLine(list);
+            }
 
-            begin();
-           */
+            // Delete a recipe by name
+            Console.WriteLine("Enter the name of the recipe to delete: ");
+            string recipeNameToDelete = Console.ReadLine();
+
+            if (recipes.ContainsKey(recipeNameToDelete))
+            {
+                recipes.Remove(recipeNameToDelete);
+                Console.WriteLine($"Recipe '{recipeNameToDelete}' deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine($"Recipe '{recipeNameToDelete}' not found.");
+            }
+
+            begin(recipes);
+           
         }
 
-        public void begin()
+        public  static void begin(SortedList<string, Recipe> recipes)
         {
             // prompts user and shows example of value type to enter
-            Console.WriteLine("Enter an appropraite number below: \r\n 1. New Recipe\r\n 2. Display Recipe\r\n 3. Clear Recipe\r\n 4.Exit");
+            Console.WriteLine("Enter an appropraite number below: " +
+                "\r\n 1. New Recipe\r\n 2. Display Recipe\r\n 3. List Recipe" +"\r\n 4.Clear Recipe" + "\r\n 5.Exit");
             string choiceEntry = Console.ReadLine();
 
 
-            while (choiceEntry != "4")
+            while (choiceEntry != "5")
             {
 
                 if (choiceEntry == "1")
@@ -166,18 +181,28 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 }
                 else if (choiceEntry == "2")
                 {
-                    DisplayRecipe();
+                    //Recipe.DisplayRecipe();
                     break;
                 }
                 else if (choiceEntry == "3") //  quits the application.
                 {
-                    ClearRecipe();
+                    // Display the list of recipe names
+                    Console.WriteLine("List of Recipe Names:");
+                    foreach (var list in recipes.Keys)
+                    {
+                        Console.WriteLine(list);
+                    }
+                    break;
+                }
+                else if (choiceEntry == "4")
+                {
+                    //Recipe.DisplayRecipe();
                     break;
                 }
 
             }
 
-            if (choiceEntry != "4")
+            if (choiceEntry != "5")
             {
                 Console.WriteLine("See you Soon! ✋");
                 Environment.Exit(-1);

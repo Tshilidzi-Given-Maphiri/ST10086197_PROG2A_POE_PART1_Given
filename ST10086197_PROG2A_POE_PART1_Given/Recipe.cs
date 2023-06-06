@@ -24,7 +24,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             
         }
 
-        public void addIngredients(string name, int quantity, string unitOfMeasurement)
+        public void addIngredients(string name, int quantity, string unitOfMeasurement, int calories, string foodGroup)
         {
             // adds a recipe to the list
             ingredients.Add(new Ingredient()
@@ -32,8 +32,10 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 // adds the ingredients taking in the variables from the ingredients class.
                 ingrName = name,
                 ingrQuantity = quantity,
-                ingrUnitOfMeasurement = unitOfMeasurement
-                
+                ingrUnitOfMeasurement = unitOfMeasurement,
+                Calories = calories,
+                FoodGroup = foodGroup
+
             });
 
 
@@ -50,7 +52,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         // scales the recipe depending on the users preference
         public void ScaleRecipe()
         {
-            ScaleFactor = 1.0;
+          
             for (int i = 0; i < ingredients.Count; i++)
             {
                 ingredients[i].ingrQuantity *= Convert.ToInt32(ScaleFactor);
@@ -89,7 +91,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             foreach (var ingredient in ingredients)
             {
-                Console.WriteLine("- " + ingredient.ingrName + " " + ingredient.ingrQuantity + " " + ingredient.ingrUnitOfMeasurement);
+                Console.WriteLine("- " + ingredient.ingrName + " " + ingredient.ingrQuantity + " " + ingredient.ingrUnitOfMeasurement + " (" + ingredient.Calories + " calories)");
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -104,22 +106,23 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
 
             Console.WriteLine("");
+            Console.WriteLine("Total calories: " + GetTotalCalories());
 
             Console.WriteLine("-------------------------------------------");
-
-
-            /* Console.WriteLine("\nSteps:");
-             for (int i = 0; i < numSteps; i++)
-             {
-                 Console.WriteLine($"{i + 1}. {steps[i]}");
-             }
-            */
 
 
         }
 
 
-        
+        public double GetTotalCalories()
+        {
+            double totalCalories = 0;
+            foreach (var ingredient in ingredients)
+            {
+                totalCalories += ingredient.Calories * ingredient.ingrQuantity;
+            }
+            return totalCalories;
+        }
 
 
         // clears all of the variables in Recipe.

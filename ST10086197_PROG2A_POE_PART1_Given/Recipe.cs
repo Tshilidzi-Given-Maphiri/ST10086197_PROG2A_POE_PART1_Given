@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ST10086197_PROG2A_POE_PART1_Given
 {
@@ -8,7 +10,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         // 
         public string recipeName { get; set; }
         public List<Ingredient> ingredients { get; set; }
-        public List<string> steps { get; set; }
+        public List<string> Steps { get; set; }
         public double ScaleFactor { get; set; }
 
 
@@ -17,7 +19,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         public Recipe()
         {
             ingredients = new List<Ingredient>();
-            steps = new List<string>();
+            Steps = new List<string>();
             // sets a value for the varibles, that the program will start with.
             ScaleFactor = 1.0;
             
@@ -45,14 +47,16 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         public void SetSteps(string step)
         {
             // adds the string step to the list when method is run.
-            steps.Add(step);
+            Steps.Add(step);
         }
 
 
         // scales the recipe depending on the users preference
         public void ScaleRecipe()
         {
-          
+
+
+            // Scale the ingredients.
             for (int i = 0; i < ingredients.Count; i++)
             {
                 ingredients[i].ingrQuantity *= Convert.ToInt32(ScaleFactor);
@@ -88,25 +92,27 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("--------Ingredients:--------");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
 
             foreach (var ingredient in ingredients)
             {
                 Console.WriteLine("- " + ingredient.ingrName + " " + ingredient.ingrQuantity + " " + ingredient.ingrUnitOfMeasurement + " (" + ingredient.Calories + " calories)");
             }
 
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("--Instructions:--");
             Console.ForegroundColor = ConsoleColor.White;
 
 
-            foreach (var instruction in steps)
+            foreach (var instruction in Steps)
             {
-                Console.WriteLine("- " + instruction);
+                Console.WriteLine("-> " + instruction);
             }
 
 
             Console.WriteLine("");
-            Console.WriteLine("Total calories: " + GetTotalCalories());
+            Console.WriteLine("Total Calories: " + GetTotalCalories() + "cal");
 
             Console.WriteLine("-------------------------------------------");
 
@@ -123,6 +129,8 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             }
             return totalCalories;
         }
+
+        
 
 
         // clears all of the variables in Recipe.

@@ -34,7 +34,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 ingrQuantity = quantity,
                 ingrUnitOfMeasurement = unitOfMeasurement
                 
-            }); ;
+            });
 
 
         }
@@ -50,26 +50,25 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         // scales the recipe depending on the users preference
         public void ScaleRecipe()
         {
-
+            ScaleFactor = 1.0;
             for (int i = 0; i < ingredients.Count; i++)
             {
-                ingredients[i].ingrQuantity *= ScaleFactor;
+                ingredients[i].ingrQuantity *= Convert.ToInt32(ScaleFactor);
             }
 
         }
 
 
-        public void ResetQuantities(double[] originalQuantities)
+        public void ResetQuantities()
         {
             // sets all of the following to their default values.
             // Reset the quantities to their original values
+
             ScaleFactor = 1.0;
             for (int i = 0; i < ingredients.Count; i++)
             {
                 ingredients[i].ingrQuantity = 1;
             }
-
-            begin();
         }
 
 
@@ -104,12 +103,17 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             }
 
 
-           /* Console.WriteLine("\nSteps:");
-            for (int i = 0; i < numSteps; i++)
-            {
-                Console.WriteLine($"{i + 1}. {steps[i]}");
-            }
-           */
+            Console.WriteLine("");
+
+            Console.WriteLine("-------------------------------------------");
+
+
+            /* Console.WriteLine("\nSteps:");
+             for (int i = 0; i < numSteps; i++)
+             {
+                 Console.WriteLine($"{i + 1}. {steps[i]}");
+             }
+            */
 
 
         }
@@ -121,7 +125,9 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         // clears all of the variables in Recipe.
         public void ClearRecipe()
         {
-            numIngredients = 0;
+            // find a way to delete recipe based ontheir name.
+
+           /* numIngredients = 0;
             ingredientNames = new string[0];
             ingredientQuantities = new double[0];
             ingredientUnits = new string[0];
@@ -129,6 +135,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             steps = new string[0];
 
             begin();
+           */
         }
 
         public void begin()
@@ -143,7 +150,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
                 if (choiceEntry == "1")
                 {
-                    SetRecipe(numIngredients);
+                    //Main();
                     break;
                 }
                 else if (choiceEntry == "2")

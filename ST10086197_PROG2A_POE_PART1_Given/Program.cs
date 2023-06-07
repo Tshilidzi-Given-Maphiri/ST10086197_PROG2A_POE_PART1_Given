@@ -5,8 +5,10 @@ using System.Diagnostics.Metrics;
 using System.Security.Cryptography;
 using Microsoft.VisualBasic;
 
+public delegate void Over300CaloriesHandler();
 namespace ST10086197_PROG2A_POE_PART1_Given
 {
+    
     public class Program
     {
 
@@ -163,9 +165,10 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             // Create a sorted list of recipes.
             SortedList<string, Recipe> recipes = new SortedList<string, Recipe>();
 
-            //Recipe recipe = new Recipe();
-
+           
             
+
+
 
             // display informational text
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -208,6 +211,8 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             Console.WriteLine("-------------------------------------------");
 
+
+            
 
             // prompts user and shows example of value type to enter
             Console.WriteLine("Enter an appropraite number below: " +
@@ -326,6 +331,9 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 Environment.Exit(-1);
 
             }
+
+            // executes the code to notify if the callories exceeds 300cal
+            recipe.NotifyWhenOver300Calories();
         }
 
         

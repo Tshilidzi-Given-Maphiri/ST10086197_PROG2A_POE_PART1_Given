@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1705.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST10086197_PROG2A_POE_PART1_Given", "ST10086197_PROG2A_POE_PART1_Given\ST10086197_PROG2A_POE_PART1_Given.csproj", "{71D65F02-C052-463D-8F18-898C161035AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTest", "RecipeTest\RecipeTest.csproj", "{96AB1B5E-CD34-4752-B905-B7671A63017F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{71D65F02-C052-463D-8F18-898C161035AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71D65F02-C052-463D-8F18-898C161035AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71D65F02-C052-463D-8F18-898C161035AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AB1B5E-CD34-4752-B905-B7671A63017F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AB1B5E-CD34-4752-B905-B7671A63017F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AB1B5E-CD34-4752-B905-B7671A63017F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AB1B5E-CD34-4752-B905-B7671A63017F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 
+
 namespace ST10086197_PROG2A_POE_PART1_Given
 {
+    public delegate void Over300CaloriesHandler();
     public class Recipe
     {
         // 
@@ -56,9 +58,6 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         public void ScaleRecipe()
         {
 
-
-
-            
             /*  foreach (Ingredient ingredient in ingredients)
               {
                   ingredient.ingrQuantity *= ScaleFactor;
@@ -133,12 +132,21 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             double totalCalories = 0;
             foreach (var ingredient in ingredients)
             {
-                totalCalories += ingredient.Calories * ingredient.ingrQuantity;
+                totalCalories += ingredient.Calories; //* ingredient.ingrQuantity
             }
             return totalCalories;
         }
 
-        
+        public void NotifyWhenOver300Calories()
+        {
+            if (GetTotalCalories() > 300)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The total calories are over 300!");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
 
 
         // clears all of the variables in Recipe.

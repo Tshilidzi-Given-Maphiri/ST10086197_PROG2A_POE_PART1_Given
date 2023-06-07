@@ -34,16 +34,76 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 int ingredientQuantity = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("");
                 
-                Console.WriteLine("Ingredient unit of measurement: ");
+                Console.WriteLine("------Ingredient unit of measurement:------ ");
+                // prompts user and shows example of value type to enter
+                Console.WriteLine("Enter an appropraite number below: " +
+                    "\r\n 1. teaspoon\r\n 2. tablespoon\r\n 3. grams \r\n 4.ml" + "\r\n 5.cups");
                 string ingredientUnitOfMeasurement = Console.ReadLine();
+
+                // Add the unit of measurment of the recipe
+                switch (ingredientUnitOfMeasurement)
+                {
+                    case "1":
+                        ingredientUnitOfMeasurement = "teaspoon";
+                        break;
+                    case "2":
+                        ingredientUnitOfMeasurement = "tablespoon";
+                        break;
+                    case "3":
+                        ingredientUnitOfMeasurement = "grams";
+                        break;
+                    case "4":
+                        ingredientUnitOfMeasurement = "ml";
+                        break;
+                    case "5":
+                        ingredientUnitOfMeasurement = "cups";
+                        break;
+                    default:
+                        Console.WriteLine("Invalid unit measurement choice.");
+                        continue;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("<-- unit of measurment added successfully! -->");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
 
                 Console.WriteLine("Ingredient calories: ");
                 int ingredientCalories = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("");
 
-                Console.WriteLine("Ingredient food group: ");
+                Console.WriteLine("------Select Ingredient food group:------ ");
+                // prompts user and shows example of value type to enter
+                Console.WriteLine("Enter an appropraite number below: " +
+                    "\r\n 1. Carbs\r\n 2. Vegetables and Fruits\r\n 3. Dairy \r\n 4.Protein" + "\r\n 5.Fats");
                 string ingredientFoodGroup = Console.ReadLine();
+
+                // Add the food group to the recipe
+                switch (ingredientFoodGroup)
+                {
+                    case "1":
+                        ingredientFoodGroup = "Carbs";
+                        break;
+                    case "2":
+                        ingredientFoodGroup = "Vegetables and Fruits";
+                        break;
+                    case "3":
+                        ingredientFoodGroup = "Dairy";
+                        break;
+                    case "4":
+                        ingredientFoodGroup = "Protein";
+                        break;
+                    case "5":
+                        ingredientFoodGroup = "Fats";
+                        break;
+                    default:
+                        Console.WriteLine("Invalid food group choice.");
+                        continue;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("<-- Food group added successfully! -->");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
 
                 if (recipes.ContainsKey(name))
@@ -125,10 +185,10 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             
             // Display the list of recipe names
-            Console.WriteLine("List of Recipe Names:");
+            Console.WriteLine("");
             foreach (var list in recipes.Keys)
             {
-                Console.WriteLine(list);
+                Console.WriteLine("-> " + list);
             }
 
             Console.WriteLine("-------------------------------------------");
@@ -161,6 +221,8 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 {
                     //Main();
                     //inputRecipe(recipes);
+                    // Run the Main class
+                    //RecipeApp.Run();
                     break;
                 }
                 else if (choiceEntry == "2")
@@ -174,7 +236,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                     Console.WriteLine("List of Recipe Names:");
                     foreach (var list in recipes.Keys)
                     {
-                        Console.WriteLine(list);
+                        Console.WriteLine("-> " + list);
                     }
                     break;
                 }
@@ -186,7 +248,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             }
 
-            if (choiceEntry != "5")
+            if (choiceEntry == "5")
             {
                 Console.WriteLine("See you Soon! ✋");
                 Environment.Exit(-1);

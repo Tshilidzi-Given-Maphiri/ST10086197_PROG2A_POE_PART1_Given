@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ST10086197_PROG2A_POE_PART1_Given\ST10086197_PROG2A_POE_PART1_Given.csproj" />
+    <ProjectReference Include="..\ST10086197_PROG2A_POE_PART1_Given\ST10086197_PROG2A_POE_PART2_Given.csproj" />
   </ItemGroup>
 </Project>

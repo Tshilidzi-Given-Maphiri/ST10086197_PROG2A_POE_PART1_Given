@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using Microsoft.VisualBasic;
 
 public delegate void Over300CaloriesHandler();
-namespace ST10086197_PROG2A_POE_PART1_Given
+namespace ST10086197_PROG2A_POE_PART2_Given
 {
     
     public class Program

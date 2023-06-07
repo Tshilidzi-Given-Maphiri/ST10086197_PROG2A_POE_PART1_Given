@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ST10086197_PROG2A_POE_PART1_Given;
+using ST10086197_PROG2A_POE_PART2_Given;
 
 
 namespace CaloriesTest

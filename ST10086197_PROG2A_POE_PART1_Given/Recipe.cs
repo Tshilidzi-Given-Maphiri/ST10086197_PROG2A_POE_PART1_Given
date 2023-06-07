@@ -103,7 +103,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
             foreach (var ingredient in ingredients)
             {
-                Console.WriteLine("- " + ingredient.ingrName + " " + ingredient.ingrQuantity + " " + ingredient.ingrUnitOfMeasurement + " (" + ingredient.Calories + " calories)");
+                Console.WriteLine("- " + ingredient.ingrName + " " + ingredient.ingrQuantity + " " + ingredient.ingrUnitOfMeasurement + " (" + ingredient.Calories + " calories)" +$"\n(Food Group: {ingredient.FoodGroup})" );
             }
 
             Console.WriteLine("");

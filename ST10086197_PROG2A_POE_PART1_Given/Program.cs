@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Security.Cryptography;
+using Microsoft.VisualBasic;
 
 namespace ST10086197_PROG2A_POE_PART1_Given
 {
@@ -219,10 +220,7 @@ namespace ST10086197_PROG2A_POE_PART1_Given
 
                 if (choiceEntry == "1")
                 {
-                    //Main();
-                    //inputRecipe(recipes);
-                    // Run the Main class
-                    //RecipeApp.Run();
+                    Main(null);
                     break;
                 }
                 else if (choiceEntry == "2")
@@ -262,10 +260,17 @@ namespace ST10086197_PROG2A_POE_PART1_Given
             string response = Console.ReadLine();
             if (response == "Y")
             {
-                Console.WriteLine("Enter the scale factor (0.5 (half), 2 (double), or 3 (triple)): ");
+               Console.WriteLine("Enter the scale factor (0.5 (half), 2 (double), or 3 (triple)): ");
                 double scaleFactor = Convert.ToDouble(Console.ReadLine());
-                recipe.ScaleRecipe();
+
+                // Scale the recipe
+                foreach (var ingredient in recipe.ingredients)
+                {
+                    ingredient.ingrQuantity *= scaleFactor;
+                }
+
                 recipe.DisplayRecipe();
+                
             }
 
 
@@ -277,22 +282,50 @@ namespace ST10086197_PROG2A_POE_PART1_Given
                 recipe.ResetQuantities();
                 recipe.DisplayRecipe();
             }
-            /* Console.WriteLine("Enter scale factor (0.5 (half), 1 (original), 2 (double), or 3 (triple)):");
-             double scaleFactor = double.Parse(Console.ReadLine());
-             recipe.ScaleRecipe(scaleFactor);
+            
+            // prompts user and shows example of value type to enter
+            Console.WriteLine("Enter an appropraite number below: " +
+                "\r\n 1. New Recipe\r\n 2. Display Recipe\r\n 3. List Recipe" + "\r\n 4.Clear Recipe" + "\r\n 5.Exit");
+            string choice = Console.ReadLine();
 
 
-             Console.ForegroundColor = ConsoleColor.Blue;
-             Console.WriteLine($"Recipe scaled by a factor of {scaleFactor}:");
-             Console.ForegroundColor = ConsoleColor.White;
-             recipe.DisplayRecipe();
+            while (choice != "5")
+            {
 
+                if (choice == "1")
+                {
+                    Main(null);
+                    break;
+                }
+                else if (choice == "2")
+                {
+                    recipe.DisplayRecipe();
+                    break;
+                }
+                else if (choice == "3") //  quits the application.
+                {
+                    // Display the list of recipe names
+                    Console.WriteLine("List of Recipe Names:");
+                    foreach (var list in recipes.Keys)
+                    {
+                        Console.WriteLine("-> " + list);
+                    }
+                    break;
+                }
+                else if (choice == "4")
+                {
+                    recipe.DisplayRecipe();
+                    break;
+                }
 
+            }
 
-             recipe.begin();
+            if (choice == "5")
+            {
+                Console.WriteLine("See you Soon! ✋");
+                Environment.Exit(-1);
 
-             */
-
+            }
         }
 
         

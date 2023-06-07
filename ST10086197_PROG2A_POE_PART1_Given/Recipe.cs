@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace ST10086197_PROG2A_POE_PART1_Given
@@ -56,11 +57,18 @@ namespace ST10086197_PROG2A_POE_PART1_Given
         {
 
 
-            // Scale the ingredients.
-            for (int i = 0; i < ingredients.Count; i++)
-            {
-                ingredients[i].ingrQuantity *= Convert.ToInt32(ScaleFactor);
-            }
+
+            
+            /*  foreach (Ingredient ingredient in ingredients)
+              {
+                  ingredient.ingrQuantity *= ScaleFactor;
+              }
+              /* // Scale the ingredients.
+               for (int i = 0; i < ingredients.Count; i++)
+               {
+                   ingredients[i].ingrQuantity *= Convert.ToInt32(ScaleFactor);
+               }
+              */
 
         }
 
